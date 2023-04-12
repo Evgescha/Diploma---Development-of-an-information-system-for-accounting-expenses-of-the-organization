@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View ExpenseReport</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>ExpenseReport Details</h1>
+<h3 th:if="${message!=null}" th:text="${message}">Message</h3>
+<table>
+        <tr>
+        <th>name:</th>
+                <td th:text="${entity.name}"></td>
+            </tr>
+        <tr>
+        <th>description:</th>
+                <td th:text="${entity.description}"></td>
+            </tr>
+        <tr>
+        <th>createDate:</th>
+                <td th:text="${entity.createDate}"></td>
+            </tr>
+        <tr>
+        <th>status:</th>
+                <td th:text="${entity.status}"></td>
+            </tr>
+        <tr>
+        <th>expenseItems:</th>
+                <td>
+            <ul>
+                <li th:each="expenseItems_item : ${entity.expenseItems}" th:text="${expenseItems_item}"></li>
+            </ul>
+        </td>
+            </tr>
+    
+
+</table>
+<br>
+<a th:href="@{/expensereport}">Back to the List</a>
+<a th:href="@{/expensereport/edit/{id}(id=${entity.id})}">Edit</a>
+<form th:if="${entity.id!=null}" method="get"
+         th:action="'/expensereport/'
+               + ${entity.id} + '/delete'">
+    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+</form>
+</body>
+</html>
