@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View BudgetAllocation</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>BudgetAllocation Details</h1>
+<h3 th:if="${message!=null}" th:text="${message}">Message</h3>
+<table>
+    <tr>
+        <th>allocatedAmount:</th>
+        <td th:text="${entity.allocatedAmount}"></td>
+    </tr>
+    <tr>
+        <th>budget:</th>
+        <td th:text="${entity.budget}"></td>
+    </tr>
+    <tr>
+        <th>category:</th>
+        <td th:text="${entity.category}"></td>
+    </tr>
+
+
+</table>
+<br>
+<a th:href="@{/budgetallocation}">Back to the List</a>
+<a th:href="@{/budgetallocation/edit/{id}(id=${entity.id})}">Edit</a>
+<form th:if="${entity.id!=null}" method="get"
+      th:action="'/budgetallocation/'
+               + ${entity.id} + '/delete'">
+    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+</form>
+</body>
+</html>

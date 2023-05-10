@@ -16,14 +16,11 @@ public class ExpenseItem extends AbstractEntity {
     private LocalDate date = LocalDate.now();
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User User;
+    private User user;
 
     @ManyToOne
-    @JoinColumn(name = "budgetAllocation_id")
     private BudgetAllocation budgetAllocation;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
     private ExpenseCategory category;
 }

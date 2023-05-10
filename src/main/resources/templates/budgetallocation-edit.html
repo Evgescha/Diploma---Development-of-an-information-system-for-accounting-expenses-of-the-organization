@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit BudgetAllocation</title>
+</head>
+<body>
+<h1>Edit BudgetAllocation</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
+<form th:action="@{/budgetAllocation}" th:object="${entity}" method="post">
+
+    <p>
+        <label for="allocatedAmount">allocatedAmount:</label>
+        <input type="text" th:field="*{allocatedAmount}" id="allocatedAmount" required>
+    </p>
+    <p>
+        <label for="budget">budget:</label>
+        <input type="text" th:field="*{budget}" id="budget" required>
+    </p>
+    <p>
+        <label for="category">category:</label>
+        <input type="text" th:field="*{category}" id="category" required>
+    </p>
+
+    <p>
+        <input type="text" th:field="*{id}" id="id">
+        <input type="submit" value="Save">
+        <a th:href="@{/budgetAllocation}">Cancel</a>
+    </p>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit ExpenseCategory</title>
+</head>
+<body>
+<h1>Edit ExpenseCategory</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
+<form th:action="@{/expenseCategory}" th:object="${entity}" method="post">
+
+    <p>
+        <label for="name">name:</label>
+        <input type="text" th:field="*{name}" id="name" required>
+    </p>
+    <p>
+        <label for="description">description:</label>
+        <input type="text" th:field="*{description}" id="description" required>
+    </p>
+    <p>
+        <label for="parentCategory">parentCategory:</label>
+        <input type="text" th:field="*{parentCategory}" id="parentCategory" required>
+    </p>
+    <p>
+        <label for="childCategories">childCategories:</label>
+        <select multiple="multiple" th:field="*{childCategories}" id="childCategories">
+            <option th:each="childCategories_item : ${childCategories_list}" th:value="${childCategories_item}"
+                    th:text="${childCategories_item}"></option>
+        </select>
+    </p>
+
+    <p>
+        <input type="text" th:field="*{id}" id="id">
+        <input type="submit" value="Save">
+        <a th:href="@{/expenseCategory}">Cancel</a>
+    </p>
+</form>
+
+</body>
+</html>

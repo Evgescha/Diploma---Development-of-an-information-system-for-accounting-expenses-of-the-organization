@@ -1,5 +1,6 @@
 package com.hescha.moneycounter.config;
 
+import com.hescha.moneycounter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
