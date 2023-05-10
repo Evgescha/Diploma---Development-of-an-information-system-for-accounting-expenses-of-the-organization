@@ -1,0 +1,411 @@
+/* Template Options */
+
+/*
+	--//-- 1. Color Options --//--
+
+	- Theme color - ff352f  (rgba - 255, 53, 47);
+	
+	--//-- 2. Theme Font --//--
+   
+	- Main font Roboto;	
+	
+*/
+
+body,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+textarea {
+	font-family: 'Roboto', sans-serif;
+}
+
+.logo_retina,
+.logo_retina {
+	width:176px;
+	height:33px;
+}
+
+::selection {
+	background:#ff352f;
+	color:#ffffff;
+}
+::-moz-selection {
+	background:#ff352f;
+	color:#ffffff;
+}
+
+a {
+	color:#ff352f;
+}
+
+.color {
+	color:#ff352f !important;
+}
+
+header nav ul.menu > li > a:before {
+	background:#ff352f;
+}
+
+header nav ul.sub-menu > li:hover > a,
+header nav ul.sub-menu > li.current-menu-item > a,
+header nav ul.sub-menu > li.current-menu-parent > a {
+	color:#ff352f;
+}
+
+.main_header.type4 header nav ul.menu > li:hover > a,
+.main_header.type4 header nav ul.menu > li.current-menu-ancestor > a,
+.main_header.type4 header nav ul.menu > li.current-menu-item > a,
+.main_header.type4 header nav ul.menu > li.current-menu-parent > a {
+	color:#ff352f;
+}
+
+.highlighted_colored {
+    background:#ff352f;
+}
+
+.dropcap.type2 {
+	color:#ff352f;
+}
+
+.dropcap.type5 {
+	background:#ff352f;
+}
+
+blockquote.type2:before {
+	color:#ff352f;
+}
+
+blockquote.type5:before {
+	background:#ff352f;
+}
+
+.module_content ul.type2 li:before {
+    color:#ff352f;
+}
+
+.sidepanel a:hover {
+	color:#ff352f;
+}
+
+.recent_posts li a.title:hover,
+.product_posts li a.title:hover,
+.pre_footer .recent_posts li a.title:hover,
+.pre_footer .product_posts li a.title:hover,
+.star_rating,
+.subtotal span {
+	color:#ff352f;
+}
+
+#mc_signup_submit:hover {
+    background: #ff352f !important;
+}
+
+.tweet_module ul li a:hover,
+.pre_footer .tweet_module ul li a:hover {
+	color:#ff352f;
+}
+
+.shortcode_button.btn_type5,
+.shortcode_button.btn_type4:hover,
+.shortcode_button.btn_type4.dark_parent:hover {
+    background: #ff352f;
+	color:#fff;
+	border-color:#ff352f;
+}
+
+.shortcode_button.btn_type5:hover {
+    background: #ff5651;
+}
+
+.map_collapse:hover {
+	background: #ff5651;
+}
+
+.stat_count {
+	color:#ff352f;
+}
+
+.counter_icon {
+	background:#ff352f;	
+}
+
+.skill_div {
+	background: #ff352f;
+}
+
+.iconbox_wrapper .ico {
+	background: #ff352f;
+}
+
+.color_gradient_vert,
+h5.shortcode_accordion_item_title:hover .ico:after,
+h5.shortcode_toggles_item_title:hover .ico:after,
+h5.shortcode_accordion_item_title.state-active .ico:after,
+h5.shortcode_toggles_item_title.state-active .ico:after,
+.icon5,
+.icon6,
+.icon7,
+.pagerblock li a.current,
+.pagerblock li a.current:hover,
+.pagerblock li span,
+.quantity .minus:hover,
+.quantity .plus:hover,
+a.remove:hover {
+	background: #ff352f; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ff352f 0%, #ff7b61 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff352f), color-stop(100%,#ff7b61)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ff352f 0%,#ff7b61 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ff352f 0%,#ff7b61 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ff352f 0%,#ff7b61 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ff352f 0%,#ff7b61 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff352f', endColorstr='#ff7b61',GradientType=0 ); /* IE6-9 */
+}
+
+.color_gradient_hor,
+.widget_filter .ui-slider-range {
+	background: #ff352f; /* Old browsers */
+	background: -moz-linear-gradient(left,  #ff352f 0%, #ff7b61 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ff352f), color-stop(100%,#ff7b61)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #ff352f 0%,#ff7b61 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #ff352f 0%,#ff7b61 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #ff352f 0%,#ff7b61 100%); /* IE10+ */
+	background: linear-gradient(to right,  #ff352f 0%,#ff7b61 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff352f', endColorstr='#ff7b61',GradientType=1 ); /* IE6-9 */
+}
+
+/* Iconbox Gradient */
+a:hover .iconbox_wrapper .ico:after,
+.shortcode_iconbox.type4 .iconbox_wrapper .ico:after,
+.shortcode_iconbox.type5 .iconbox_wrapper .ico:after,
+.step_by_step .iconbox_wrapper .ico:after,
+.shortcode_iconbox.type6 .iconbox_wrapper .ico:after {
+	background: #ff352f; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ff352f 0%, #ff7b61 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff352f), color-stop(100%,#ff7b61)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ff352f 0%,#ff7b61 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ff352f 0%,#ff7b61 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ff352f 0%,#ff7b61 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ff352f 0%,#ff7b61 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff352f', endColorstr='#ff7b61',GradientType=0 ); /* IE6-9 */
+}
+
+.easyPieChart {
+    color: #ff352f;
+}
+
+a:hover .iconbox_wrapper .ico:before {
+	box-shadow:0 0 0 2px #ff352f;	
+}
+
+h1.light span {
+	color: #ff352f;
+}
+
+.slick_testim_info h5 span,
+.testimonials_list li .item h5.testimonials_title span {
+	color: #ff352f;
+}
+
+h5.shortcode_accordion_item_title:hover,
+h5.shortcode_toggles_item_title:hover,
+h5.shortcode_accordion_item_title.state-active,
+h5.shortcode_toggles_item_title.state-active {
+   color:#ff352f;
+}
+
+.module_team .item_list.type2 .teamlink:hover {
+    color: #ff352f !important;
+}
+
+.module_cont hr.type2 {
+    border-top: #ff352f 1px solid;
+}
+
+.price_item.most_popular .price_item_title h5 {
+   color: #ff352f;
+}
+
+.shortcode_tab_item_title.active:before {
+    background: #ff352f;
+}
+
+.item_tab h6 a:hover,
+.contact_info_item a:hover,
+.shortcode_timeline a:hover {
+	color:#ff352f;
+}
+
+.shortcode_timeline_date {
+	background: #ff352f;
+}
+
+.view_link:hover,
+.view_link:hover i {
+	color:#ff352f;
+}
+
+.featured_items_body a:hover {
+	color:#ff352f;
+}
+
+.breadcrumbs a:hover {
+	color:#ff352f;
+}
+
+.map_collapse {
+	background: #ff352f;
+}
+
+.table_info_title h3 .badge {
+	background: #ff352f;
+}
+
+.send_mail h3 a {
+	color:#ff352f;
+}
+
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.coupon input[type="submit"]:hover {
+	background-color:#ff352f;
+}
+
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+    background-color:#ff5651;
+}
+
+.with_reset .fright:hover:before {
+	color:#ff352f;
+}
+
+.widget_tag_cloud a:hover {
+    color:#ff352f;
+	border-color:#ff352f;
+}
+
+.countdown-amount {
+	color:#ff352f;
+}
+
+.global_count_wrapper.horizontal .count_title h1 span {
+    color:#ff352f;
+}
+
+.blogpost_title a:hover,
+.listing_meta a:hover {
+	color:#ff352f;
+}
+
+.blog_post_preview blockquote:before {
+	color:#ff352f;
+}
+
+.pagerblock li a:hover {
+	color:#ff352f;
+}
+
+.blogpost_user_meta h3 a,
+.prev_next_links a:hover,
+.comment_author_name a:hover,
+.comment_meta a:hover {
+	color:#ff352f;
+}
+
+.contact_info a:hover {
+	color:#ff352f;	
+}
+
+.widget_filter #slider-range .ui-slider-handle:before {
+	background:#ff352f;
+}
+
+.widget_filter #slider-range .ui-slider-handle:after {
+	border-top: 4px solid #ff352f;
+}
+
+.sidepanel li.current-menu-item a {
+	color:#ff352f;
+}
+
+.item_cart:hover,
+.item_link:hover,
+.shop_list_info a:hover,
+.posted_in a:hover,
+.tagged_as a:hover,
+.product-name a:hover,
+.calculate:hover,
+h2.portf_title a:hover {
+	color:#ff352f;
+}
+
+.filter_navigation ul li ul li a:hover {
+	color:#ff352f;
+	border-color:#ff352f;
+}
+
+.filter_navigation ul li ul li a:before {
+	background-color:#ff352f;
+}
+
+.slide_title span {
+	color:#ff352f;
+}
+
+.slide_btn a {
+	background-color:#ff352f;
+	border-color:#ff352f;
+}
+
+.news_block .img_block:before {
+	border:1px #ff352f solid;
+}
+
+.proj_title h5 a:hover,
+.proj_meta a:hover {
+	color:#ff352f;
+}
+
+.page_has_countdown .count_title h1 {
+    color:#ff352f;
+}
+
+.color_bg {
+    background-color:#ff352f;
+}
+
+.slide_btn a.light_parent:hover,
+.light_parent .slide_btn a:hover {
+	background-color:#ff5651;
+	border-color:#ff5651;
+}
+
+.table_info_details,
+.table_info_details:focus {
+	color:#ff352f;
+}
+
+.mobile_menu_wrapper a:hover,
+.mobile_menu_wrapper .current-menu-parent a,
+.mobile_menu_wrapper .current-menu-parent .sub-menu a:hover,
+.mobile_menu_wrapper .current-menu-parent .sub-menu li.current-menu-parent a.mob_link {
+	color:#ff352f;
+}
+
+.mobile_menu_wrapper .current-menu-item a.mob_link {
+	color:#ff352f !important;
+}
+
+.mobile_menu_wrapper li.current-menu-parent.menu-item-has-children:before,
+.mobile_menu_wrapper li.menu-item-has-children:hover:before {
+	color:#ff352f;
+}
+
+.login_popup .forgot_password a:hover {
+	color:#ff352f;
+}
+
+

@@ -8,24 +8,42 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class IndexController {
     @GetMapping("/about")
-    public String about(){
+    public String about() {
         return "about";
     }
 
     @GetMapping("/contact")
-    public String contact(){
+    public String contact() {
         return "contact";
     }
+
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "index";
     }
-    @GetMapping("/service")
-    public String service(){
-        return "service";
+
+    @GetMapping("/faq")
+    public String faq() {
+        return "faq";
     }
-    @GetMapping("/single")
-    public String single(){
-        return "single";
+
+    @GetMapping("/404")
+    public String _404() {
+        return "404";
+    }
+
+    @GetMapping("/shop")
+    public String shop() {
+        return "shop";
+    }
+
+    @GetMapping("/shortcodes")
+    public String shortcodes() {
+        return "shortcodes";
+    }
+
+    @GetMapping("/typography")
+    public String typography() {
+        return "typography";
     }
 }

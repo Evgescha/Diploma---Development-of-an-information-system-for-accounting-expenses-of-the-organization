@@ -1,7 +1,7 @@
 package com.hescha.moneycounter.controller;
 
-import com.hescha.mailtracking.model.User;
-import com.hescha.mailtracking.service.UserService;
+import com.hescha.moneycounter.model.User;
+import com.hescha.moneycounter.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="map" class="wall_map">
+    <a class="map_collapse" data-toggle="collapse" href="#collapse_map" aria-expanded="false" aria-controls="collapse_map">Locate Us on Map <i class="icon-map-marker"></i></a>
+    <div class="collapse" id="collapse_map">
+        <div class="module_google_map">
+            <iframe src="http://maps.google.ca/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=New+York&amp;sll=49.891235,-97.15369&amp;sspn=47.259509,86.923828&amp;ie=UTF8&amp;hq=&amp;hnear=New+York,+United+States&amp;ll=40.714867,-74.005537&amp;spn=0.019517,0.018797&amp;z=14&amp;iwloc=near&amp;output=embed"></iframe>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
