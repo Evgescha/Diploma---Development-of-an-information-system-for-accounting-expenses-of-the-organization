@@ -51,8 +51,7 @@ public class ExpenseCategoryController {
             model.addAttribute("entity", service.read(id));
         }
 
-        model.addAttribute("expenseCategory_list", expenseCategoryService.readAll());
-        model.addAttribute("expenseCategory_list", expenseCategoryService.readAll());
+        model.addAttribute("categories", expenseCategoryService.readAll());
 
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }

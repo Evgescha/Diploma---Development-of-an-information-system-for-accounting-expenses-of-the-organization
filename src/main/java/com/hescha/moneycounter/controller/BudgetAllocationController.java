@@ -55,8 +55,8 @@ public class BudgetAllocationController {
             model.addAttribute("entity", service.read(id));
         }
 
-        model.addAttribute("budget_list", budgetService.readAll());
-        model.addAttribute("expenseCategory_list", expenseCategoryService.readAll());
+        model.addAttribute("budgets", budgetService.readAll());
+        model.addAttribute("categories", expenseCategoryService.readAll());
 
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }

@@ -20,7 +20,4 @@ public class ExpenseItem extends AbstractEntity {
 
     @ManyToOne
     private BudgetAllocation budgetAllocation;
-
-    @ManyToOne
-    private ExpenseCategory category;
 }

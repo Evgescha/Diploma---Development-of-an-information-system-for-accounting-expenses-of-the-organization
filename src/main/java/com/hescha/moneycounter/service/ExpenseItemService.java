@@ -46,10 +46,6 @@ public class ExpenseItemService extends CrudService<ExpenseItem> {
         return repository.findByBudgetAllocation(budgetAllocation);
     }
 
-    public ExpenseItem findByCategory(ExpenseCategory category) {
-        return repository.findByCategory(category);
-    }
-
 
     public ExpenseItem update(Long id, ExpenseItem entity) {
         ExpenseItem read = read(id);
@@ -67,6 +63,5 @@ public class ExpenseItemService extends CrudService<ExpenseItem> {
         read.setDate(entity.getDate());
         read.setUser(entity.getUser());
         read.setBudgetAllocation(entity.getBudgetAllocation());
-        read.setCategory(entity.getCategory());
     }
 }

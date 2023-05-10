@@ -25,4 +25,8 @@ public class User extends AbstractEntity {
 
     @OneToMany
     private List<ExpenseItem> expenseItems = new ArrayList<>();
+
+    public String getFullname() {
+        return firstname + " " + lastname;
+    }
 }

@@ -29,12 +29,6 @@
                         <li>
                             <a href="/faq">FAQ</a>
                         </li>
-                        <li>
-                            <a href="/shortcodes">shortcodes</a>
-                        </li>
-                        <li>
-                            <a href="/typography">typography</a>
-                        </li>
                         <li th:if="${#request.userPrincipal != null and !#request.isUserInRole('ADMIN') }">
                             <a href="/user/profile" class="nav-item nav-link" >Profile</a>
                         </li>

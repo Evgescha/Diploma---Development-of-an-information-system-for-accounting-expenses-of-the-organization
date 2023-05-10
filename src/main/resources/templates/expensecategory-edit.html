@@ -17,13 +17,18 @@
                         <h3 th:if="${message != null}" th:text="${message}">Message</h3>
                         <div class="row row20">
                             <div class="col-sm-4">
+                                <label class="info-title" for="roles">Name</label>
                                 <input type="text" th:field="*{name}" placeholder="Name *" required>
                             </div>
                             <div class="col-sm-4">
+                                <label class="info-title" for="roles">Description</label>
                                 <input type="text" th:field="*{description}" placeholder="Description *" required>
                             </div>
                             <div class="col-sm-4">
-                                <input type="text" th:field="*{parentCategory}" placeholder="Parent Category *">
+                                <label class="info-title" for="roles">Parent Category</label>
+                                <select th:field="*{parentCategory}" id="roles" class="form-control unicase-form-control text-input" style="min-height: 100px">
+                                    <option th:each="item : ${categories}" th:value="${item.id}" th:text="${item.name}"></option>
+                                </select>
                             </div>
                         </div>
                         <div class="row row20">

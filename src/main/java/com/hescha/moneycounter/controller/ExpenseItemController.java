@@ -56,9 +56,9 @@ public class ExpenseItemController {
             model.addAttribute("entity", service.read(id));
         }
 
-        model.addAttribute("user_list", userService.readAll());
-        model.addAttribute("budgetAllocation_list", budgetAllocationService.readAll());
-        model.addAttribute("expenseCategory_list", expenseCategoryService.readAll());
+        model.addAttribute("users", userService.readAll());
+        model.addAttribute("budgetAllocations", budgetAllocationService.readAll());
+        model.addAttribute("categories", expenseCategoryService.readAll());
 
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }
