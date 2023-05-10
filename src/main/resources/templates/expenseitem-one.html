@@ -5,44 +5,43 @@
     <head th:replace="~{/commons/head :: head}"></head>
 <body>
 <div th:replace="~{/commons/header :: header}"></div>
-<h1>expenseitem Details</h1>
-<h3 th:if="${message!=null}" th:text="${message}">Message</h3>
-<table>
-    <tr>
-        <th>name:</th>
-        <td th:text="${entity.name}"></td>
-    </tr>
-    <tr>
-        <th>amount:</th>
-        <td th:text="${entity.amount}"></td>
-    </tr>
-    <tr>
-        <th>date:</th>
-        <td th:text="${entity.date}"></td>
-    </tr>
-    <tr>
-        <th>User:</th>
-        <td th:text="${entity.User}"></td>
-    </tr>
-    <tr>
-        <th>budgetallocation:</th>
-        <td th:text="${entity.budgetallocation}"></td>
-    </tr>
-    <tr>
-        <th>category:</th>
-        <td th:text="${entity.category}"></td>
-    </tr>
 
 
-</table>
-<br>
-<a th:href="@{/expenseitem}">Back to the List</a>
-<a th:href="@{/expenseitem/edit/{id}(id=${entity.id})}">Edit</a>
-<form th:if="${entity.id!=null}" method="get"
-      th:action="'/expenseitem/'
+<div class="container mt-4">
+    <h1 class="text-center">Expense Item Details</h1>
+    <div class="row">
+        <div class="col">
+
+            <div class="my-4">
+                <p><strong>Name:</strong> <span th:text="${entity.name}">Expense Item Name</span></p>
+                <p><strong>Amount:</strong> <span th:text="${entity.amount}">Expense Item Amount</span></p>
+                <p><strong>Date:</strong> <span th:text="${entity.date}">Expense Item Date</span></p>
+
+                <h4>User:</h4>
+                <p><strong>Username:</strong> <span th:text="${entity.user.username}">Username</span></p>
+
+                <h4>Budget Allocation:</h4>
+                <p><strong>Allocated Amount:</strong> <span th:text="${entity.budgetAllocation}">Allocated Amount</span>
+                </p>
+
+                <h4>Expense Category:</h4>
+                <p><strong>Name:</strong> <span th:text="${entity.category.name}">Category Name</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+            <a th:href="@{/expenseitem}">Back to the List</a>
+            <a th:href="@{/expenseitem/edit/{id}(id=${entity.id})}">Edit</a>
+            <form th:if="${entity.id!=null}" method="get"
+                  th:action="'/expenseitem/'
                + ${entity.id} + '/delete'">
-    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
-</form>
+                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+        </div>
+    </div>
+</div>
 <div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>

@@ -5,40 +5,46 @@
     <head th:replace="~{/commons/head :: head}"></head>
 <body>
 <div th:replace="~{/commons/header :: header}"></div>
-<h1>expensecategory Details</h1>
-<h3 th:if="${message!=null}" th:text="${message}">Message</h3>
-<table>
-    <tr>
-        <th>name:</th>
-        <td th:text="${entity.name}"></td>
-    </tr>
-    <tr>
-        <th>description:</th>
-        <td th:text="${entity.description}"></td>
-    </tr>
-    <tr>
-        <th>parentCategory:</th>
-        <td th:text="${entity.parentCategory}"></td>
-    </tr>
-    <tr>
-        <th>childCategories:</th>
-        <td>
-            <ul>
-                <li th:each="childCategories_item : ${entity.childCategories}" th:text="${childCategories_item}"></li>
-            </ul>
-        </td>
-    </tr>
 
 
-</table>
-<br>
-<a th:href="@{/expensecategory}">Back to the List</a>
-<a th:href="@{/expensecategory/edit/{id}(id=${entity.id})}">Edit</a>
-<form th:if="${entity.id!=null}" method="get"
-      th:action="'/expensecategory/'
+<body>
+<div class="container mt-4">
+    <h1 class="text-center">Expense Category Details</h1>
+    <div class="row">
+        <div class="col">
+
+            <div class="my-4">
+                <p><strong>Name:</strong> <span th:text="${entity.name}">Category Name</span></p>
+                <p><strong>Description:</strong> <span th:text="${entity.description}">Category Description</span></p>
+
+                <h4>Parent Category:</h4>
+                <p th:if="${entity.parentCategory != null}">
+                    <strong>Name:</strong> <span th:text="${entity.parentCategory.name}">Parent Category Name</span>
+                </p>
+                <p th:if="${entity.parentCategory == null}">No parent category</p>
+
+                <h4>Child Categories:</h4>
+                <ul>
+                    <li th:each="child : ${entity.childCategories}" th:text="${child.name}">Child Category Name</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a th:href="@{/expensecategory}">Back to the List</a>
+            <a th:href="@{/expensecategory/edit/{id}(id=${entity.id})}">Edit</a>
+            <form th:if="${entity.id!=null}" method="get"
+                  th:action="'/expensecategory/'
                + ${entity.id} + '/delete'">
-    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
-</form>
+                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
 <div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>
