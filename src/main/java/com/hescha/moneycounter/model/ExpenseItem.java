@@ -13,7 +13,15 @@ import java.time.LocalDate;
 public class ExpenseItem extends AbstractEntity {
     private String name;
     private BigDecimal amount;
-    private LocalDate date;
+    private LocalDate date = LocalDate.now();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User User;
+
+    @ManyToOne
+    @JoinColumn(name = "budgetAllocation_id")
+    private BudgetAllocation budgetAllocation;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

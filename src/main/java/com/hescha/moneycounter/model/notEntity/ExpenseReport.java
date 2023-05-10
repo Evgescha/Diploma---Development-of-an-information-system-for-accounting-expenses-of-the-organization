@@ -1,5 +1,7 @@
-package com.hescha.moneycounter.model;
+package com.hescha.moneycounter.model.notEntity;
 
+import com.hescha.moneycounter.model.AbstractEntity;
+import com.hescha.moneycounter.model.ExpenseItem;
 import lombok.Data;
 
 import javax.persistence.Entity;

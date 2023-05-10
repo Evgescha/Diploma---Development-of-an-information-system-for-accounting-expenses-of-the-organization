@@ -32,8 +32,4 @@ public abstract class CrudService<Entity extends AbstractEntity> {
     public void delete(long id) {
         repository.deleteById(id);
     }
-
-    public void delete(Entity entity) {
-        repository.delete(entity);
-    }
 }

@@ -21,7 +21,4 @@ public class ExpenseCategory extends AbstractEntity {
 
     @OneToMany
     private List<ExpenseCategory> childCategories = new ArrayList<>();
-
-    @OneToMany
-    private List<ExpenseItem> expenseItems = new ArrayList<>();
 }
