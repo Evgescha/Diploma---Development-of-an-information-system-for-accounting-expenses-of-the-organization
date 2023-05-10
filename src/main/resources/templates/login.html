@@ -4,12 +4,9 @@
 </head>
 
 <body>
-<div th:replace="~{/commons/topbar :: topbar}"></div>
-<div th:replace="~{/commons/navbar :: navbar}"></div>
-<div th:replace="~{/commons/head :: page('Login page')}"></div>
+<div th:replace="~{/commons/header :: header}"></div>
 
-
-<section class="body-content outer-top-bd mt-5 mb-5">
+<section class="body-content outer-top-bd mt-5 mb-5" style="margin: 50px 0">
     <div class="container">
         <div class="sign-in-page inner-bottom-sm">
             <div class="row">
@@ -70,22 +67,16 @@
                                    required>
                         </div>
                         <div class="form-group">
-                            <label class="info-title" for="e5">Passport number<span>*</span>
+                            <label class="info-title" for="e5">Email<span>*</span>
                             </label>
-                            <input type="text" class="form-control form-control text-input" id="e5"
-                                   name="passportNumber" required>
+                            <input type="email" class="form-control form-control text-input" id="e5"
+                                   name="email" required>
                         </div>
                         <div class="form-group">
                             <label class="info-title" for="e6">Image <span>*</span>
                             </label>
-                            <input type="text" class="form-control form-control text-input" id="e6" name="/image"
+                            <input type="text" class="form-control form-control text-input" id="e6" name="image"
                                    required>
-                        </div>
-                        <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail2">Address <span>*</span>
-                            </label>
-                            <input type="text" class="form-control form-control text-input" id="exampleInputEmail2"
-                                   name="address" required>
                         </div>
                         <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
                     </form>
@@ -96,6 +87,5 @@
 </section>
 
 <footer th:replace="~{/commons/footer :: footer}"></footer>
-<div th:replace="~{/commons/script :: script}"></div>
 </body>
 </html>

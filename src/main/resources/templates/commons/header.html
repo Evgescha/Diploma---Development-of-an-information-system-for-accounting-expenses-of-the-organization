@@ -16,22 +16,29 @@
                 </div>
                 <nav>
                     <ul class="menu">
-                        <li><a href="/">index</a></li>
-                        <li><a href="/404">404</a></li>
-                        <li><a href="/about">about</a></li>
-                        <li><a href="/contact">contact</a></li>
-                        <li><a href="/faq">faq</a></li>
-                        <li><a href="/shop">shop</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/faq">FAQ</a></li>
                         <li><a href="/shortcodes">shortcodes</a></li>
                         <li><a href="/typography">typography</a></li>
-                        <li><a href="/login">login</a></li>
-                        <li><a href="/logout">logout</a></li>
+                        <li><a href="/login"
+                               th:if="${#request.userPrincipal == null}"
+                        >login</a></li>
+                        <li><a href="/logout"
+                               th:if="${#request.userPrincipal != null}"
+                        >logout</a></li>
                     </ul>
                 </nav>
                 <div class="clear"></div>
             </div>
         </header>
     </div>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/modules.js"></script>
+    <script type="text/javascript" src="/js/theme.js"></script>
 </div>
 
 </body>

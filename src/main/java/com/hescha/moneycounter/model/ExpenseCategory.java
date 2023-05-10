@@ -2,6 +2,7 @@ package com.hescha.moneycounter.model;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 public class ExpenseCategory extends AbstractEntity {
     private String name;
+    @Column(length = 5000)
     private String description;
 
     @ManyToOne

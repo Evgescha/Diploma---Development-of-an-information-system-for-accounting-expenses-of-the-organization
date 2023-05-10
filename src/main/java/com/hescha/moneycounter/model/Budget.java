@@ -2,6 +2,7 @@ package com.hescha.moneycounter.model;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 public class Budget extends AbstractEntity {
     private String name;
+    @Column(length = 5000)
     private String description;
     private BigDecimal totalAmount;
     private LocalDate periodStart;

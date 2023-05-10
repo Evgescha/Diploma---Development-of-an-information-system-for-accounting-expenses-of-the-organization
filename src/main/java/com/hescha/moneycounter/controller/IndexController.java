@@ -32,11 +32,6 @@ public class IndexController {
         return "404";
     }
 
-    @GetMapping("/shop")
-    public String shop() {
-        return "shop";
-    }
-
     @GetMapping("/shortcodes")
     public String shortcodes() {
         return "shortcodes";

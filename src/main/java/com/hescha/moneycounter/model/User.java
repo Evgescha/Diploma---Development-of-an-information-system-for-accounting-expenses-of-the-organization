@@ -3,6 +3,7 @@ package com.hescha.moneycounter.model;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,7 +19,8 @@ public class User extends AbstractEntity {
     private String firstname;
     private String lastname;
     private String email;
-    @ManyToMany
+    private String image;
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles = new ArrayList<>();
 
     @OneToMany
