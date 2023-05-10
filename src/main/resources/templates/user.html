@@ -4,39 +4,40 @@
     <title>List of User</title>
     <head th:replace="~{/commons/head :: head}"></head>
 <body>
-<div th:replace="~{/commons/header :: header}"></div>
-<h1>List of User</h1>
-<h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<a th:href="@{/user/edit}">Create new User</a>
-<table>
-    <thead>
-    <tr>
-        <th>username</th>
-        <th>firstname</th>
-        <th>lastname</th>
-        <th>email</th>
-
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="entity : ${list}">
-        <td th:text=${entity.username}></td>
-        <td th:text=${entity.firstname}></td>
-        <td th:text=${entity.lastname}></td>
-        <td th:text=${entity.email}></td>
-        <td>
-            <a th:href="@{/user/{id}(id=${entity.id})}">See detail</a>
-            <a th:href="@{/user/edit/{id}(id=${entity.id})}">Edit</a>
-            <form th:if="${entity.id!=null}" method="get"
-                  th:action="'/user/'
-                  +${entity.id}+'/delete'">
-                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<div th:replace="~{/commons/header :: header}"></div><div class="container mt-4">
+    <h1 class="text-center">List of Users</h1>
+    <div class="my-4">
+        <a class="btn btn-primary" th:href="@{/user/edit}">Create new User</a>
+    </div>
+    <h3 class="text-center" th:if="${message != null}" th:text="${message}">Message</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>username</th>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>email</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entity : ${list}">
+            <td th:text=${entity.username}></td>
+            <td th:text=${entity.firstname}></td>
+            <td th:text=${entity.lastname}></td>
+            <td th:text=${entity.email}></td>
+            <td>
+                <a class="btn btn-info btn-sm" th:href="@{/user/{id}(id=${entity.id})}">See detail</a>
+                <a class="btn btn-warning btn-sm" th:href="@{/user/edit/{id}(id=${entity.id})}">Edit</a>
+                <form th:if="${entity.id!=null}" method="get"
+                      th:action="'/user/'+${entity.id}+'/delete'">
+                    <input class="btn btn-danger btn-sm" type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 <div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>

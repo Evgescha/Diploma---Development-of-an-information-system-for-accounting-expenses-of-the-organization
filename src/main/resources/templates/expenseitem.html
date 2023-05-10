@@ -5,43 +5,44 @@
     <head th:replace="~{/commons/head :: head}"></head>
 <body>
 <div th:replace="~{/commons/header :: header}"></div>
-<h1>List of expenseitem</h1>
-<h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<a th:href="@{/expenseitem/edit}">Create new expenseitem</a>
-<table>
-    <thead>
-    <tr>
-        <th>name</th>
-        <th>amount</th>
-        <th>date</th>
-        <th>User</th>
-        <th>budgetallocation</th>
-        <th>category</th>
-
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="entity : ${list}">
-        <td th:text=${entity.name}></td>
-        <td th:text=${entity.amount}></td>
-        <td th:text=${entity.date}></td>
-        <td th:text=${entity.User}></td>
-        <td th:text=${entity.budgetallocation}></td>
-        <td th:text=${entity.category}></td>
-
-        <td>
-            <a th:href="@{/expenseitem/{id}(id=${entity.id})}">See detail</a>
-            <a th:href="@{/expenseitem/edit/{id}(id=${entity.id})}">Edit</a>
-            <form th:if="${entity.id!=null}" method="get"
-                  th:action="'/expenseitem/'
-                  +${entity.id}+'/delete'">
-                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<div class="container mt-4">
+    <h1 class="text-center">List of Expense Items</h1>
+    <div class="my-4">
+        <a class="btn btn-primary" th:href="@{/expenseitem/edit}">Create new Expense Item</a>
+    </div>
+    <h3 class="text-center" th:if="${message != null}" th:text="${message}">Message</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>amount</th>
+            <th>date</th>
+            <th>User</th>
+            <th>budget allocation</th>
+            <th>category</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entity : ${list}">
+            <td th:text=${entity.name}></td>
+            <td th:text=${entity.amount}></td>
+            <td th:text=${entity.date}></td>
+            <td th:text=${entity.User}></td>
+            <td th:text=${entity.budgetallocation}></td>
+            <td th:text=${entity.category}></td>
+            <td>
+                <a class="btn btn-info btn-sm" th:href="@{/expenseitem/{id}(id=${entity.id})}">See detail</a>
+                <a class="btn btn-warning btn-sm" th:href="@{/expenseitem/edit/{id}(id=${entity.id})}">Edit</a>
+                <form th:if="${entity.id!=null}" method="get"
+                      th:action="'/expenseitem/'+${entity.id}+'/delete'">
+                    <input class="btn btn-danger btn-sm" type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 <div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>
