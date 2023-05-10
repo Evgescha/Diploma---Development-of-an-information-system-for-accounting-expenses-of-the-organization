@@ -68,6 +68,5 @@ public class BudgetService extends CrudService<Budget> {
         read.setTotalAmount(entity.getTotalAmount());
         read.setPeriodStart(entity.getPeriodStart());
         read.setPeriodEnd(entity.getPeriodEnd());
-        read.setBudgetAllocations(entity.getBudgetAllocations());
     }
 }

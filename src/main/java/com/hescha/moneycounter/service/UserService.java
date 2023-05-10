@@ -1,5 +1,6 @@
 package com.hescha.moneycounter.service;
 
+import com.hescha.moneycounter.model.Role;
 import com.hescha.moneycounter.model.User;
 import com.hescha.moneycounter.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,6 +107,21 @@ public class UserService extends CrudService<User>  implements org.springframewo
         read.setLastname(entity.getLastname());
         read.setEmail(entity.getEmail());
         read.setRoles(entity.getRoles());
-        read.setExpenseItems(entity.getExpenseItems());
+    }
+
+    public boolean registerNew(User entity) {
+        Role read = roleService.read(1);
+        entity.getRoles().add(read);
+        if (repository.findByUsername(entity.getUsername()) != null) {
+            return false;
+        }
+        entity.setPassword(passwordEncoder.encode(entity.getPassword()));
+        try {
+            create(entity);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

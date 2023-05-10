@@ -56,6 +56,5 @@ public class ExpenseCategoryService extends CrudService<ExpenseCategory> {
         read.setName(entity.getName());
         read.setDescription(entity.getDescription());
         read.setParentCategory(entity.getParentCategory());
-        read.setChildCategories(entity.getChildCategories());
     }
 }
