@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>View BudgetAllocation</title>
-    <meta charset="UTF-8">
-</head>
+    <head th:replace="~{/commons/head :: head}"></head>
 <body>
+<div th:replace="~{/commons/header :: header}"></div>
 <h1>BudgetAllocation Details</h1>
 <h3 th:if="${message!=null}" th:text="${message}">Message</h3>
 <table>
@@ -31,5 +31,6 @@
                + ${entity.id} + '/delete'">
     <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
 </form>
+<div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>

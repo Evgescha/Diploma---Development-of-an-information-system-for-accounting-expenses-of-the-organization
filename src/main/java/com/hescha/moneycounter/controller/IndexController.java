@@ -31,14 +31,4 @@ public class IndexController {
     public String _404() {
         return "404";
     }
-
-    @GetMapping("/shortcodes")
-    public String shortcodes() {
-        return "shortcodes";
-    }
-
-    @GetMapping("/typography")
-    public String typography() {
-        return "typography";
-    }
 }

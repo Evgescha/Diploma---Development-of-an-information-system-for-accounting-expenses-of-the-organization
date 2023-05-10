@@ -5,29 +5,63 @@
     <title>Title</title>
 </head>
 <body>
-
 <div th:fragment="header" class="main_header type3">
     <div class="header_parent_wrap">
         <header>
             <div class="container">
                 <div class="logo_sect">
-                    <a href="/" class="logo"><img src="/img/logo.png" class="logo_def" alt=""/><img
-                            src="/img/retina/logo.png" class="logo_retina" alt=""/></a>
+                    <a href="/" class="logo">
+                        <img src="/img/logo.png" class="logo_def" alt=""/>
+                        <img src="/img/retina/logo.png" class="logo_retina" alt=""/>
+                    </a>
                 </div>
                 <nav>
                     <ul class="menu">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                        <li><a href="/faq">FAQ</a></li>
-                        <li><a href="/shortcodes">shortcodes</a></li>
-                        <li><a href="/typography">typography</a></li>
-                        <li><a href="/login"
-                               th:if="${#request.userPrincipal == null}"
-                        >login</a></li>
-                        <li><a href="/logout"
-                               th:if="${#request.userPrincipal != null}"
-                        >logout</a></li>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="/about">About</a>
+                        </li>
+                        <li>
+                            <a href="/contact">Contact</a>
+                        </li>
+                        <li>
+                            <a href="/faq">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="/shortcodes">shortcodes</a>
+                        </li>
+                        <li>
+                            <a href="/typography">typography</a>
+                        </li>
+                        <li th:if="${#request.userPrincipal != null and !#request.isUserInRole('ADMIN') }">
+                            <a href="/user/profile" class="nav-item nav-link" >Profile</a>
+                        </li>
+                        <li th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('MANAGER')}">
+                            <a href="/budget" class="nav-item nav-link"
+                            >Budget</a>
+                        </li>
+                        <li th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('MANAGER')}">
+                            <a href="/budgetallocation" class="nav-item nav-link"  >budgetallocation</a>
+                        </li>
+                        <li th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('MANAGER')}">
+                            <a href="/expensecategory" class="nav-item nav-link"
+                            >expensecategory</a>
+                        </li>
+                        <li th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('MANAGER')}">
+                            <a href="/expenseitem" class="nav-item nav-link"
+                            >expenseitem</a>
+                        </li>
+                        <li th:if="${#request.isUserInRole('ADMIN')}">
+                            <a href="/user" class="nav-item nav-link" >Users</a>
+                        </li>
+                        <li th:if="${#request.userPrincipal == null}" >
+                            <a href="/login">login</a>
+                        </li>
+                        <li th:if="${#request.userPrincipal != null}" >
+                            <a href="/logout">logout</a>
+                        </li>
                     </ul>
                 </nav>
                 <div class="clear"></div>
@@ -40,6 +74,5 @@
     <script type="text/javascript" src="/js/modules.js"></script>
     <script type="text/javascript" src="/js/theme.js"></script>
 </div>
-
 </body>
 </html>

@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>View User</title>
-    <meta charset="UTF-8">
-</head>
+    <head th:replace="~{/commons/head :: head}"></head>
 <body>
+<div th:replace="~{/commons/header :: header}"></div>
 <h1>User Details</h1>
 <h3 th:if="${message!=null}" th:text="${message}">Message</h3>
 <table>
@@ -37,10 +37,10 @@
         </td>
     </tr>
     <tr>
-        <th>expenseItems:</th>
+        <th>expenseitems:</th>
         <td>
             <ul>
-                <li th:each="expenseItems_item : ${entity.expenseItems}" th:text="${expenseItems_item}"></li>
+                <li th:each="expenseitems_item : ${entity.expenseitems}" th:text="${expenseitems_item}"></li>
             </ul>
         </td>
     </tr>
@@ -55,5 +55,6 @@
                + ${entity.id} + '/delete'">
     <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
 </form>
+<div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>List of ExpenseCategory</title>
-    <meta charset="UTF-8">
-</head>
+    <title>List of expensecategory</title>
+    <head th:replace="~{/commons/head :: head}"></head>
 <body>
-<h1>List of ExpenseCategory</h1>
+<div th:replace="~{/commons/header :: header}"></div>
+<h1>List of expensecategory</h1>
 <h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<a th:href="@{/expenseCategory/edit}">Create new ExpenseCategory</a>
+<a th:href="@{/expensecategory/edit}">Create new expensecategory</a>
 <table>
     <thead>
     <tr>
@@ -31,10 +31,10 @@
         </td>
 
         <td>
-            <a th:href="@{/expenseCategory/{id}(id=${entity.id})}">See detail</a>
-            <a th:href="@{/expenseCategory/edit/{id}(id=${entity.id})}">Edit</a>
+            <a th:href="@{/expensecategory/{id}(id=${entity.id})}">See detail</a>
+            <a th:href="@{/expensecategory/edit/{id}(id=${entity.id})}">Edit</a>
             <form th:if="${entity.id!=null}" method="get"
-                  th:action="'/expenseCategory/'
+                  th:action="'/expensecategory/'
                   +${entity.id}+'/delete'">
                 <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
             </form>
@@ -42,5 +42,6 @@
     </tr>
     </tbody>
 </table>
+<div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>

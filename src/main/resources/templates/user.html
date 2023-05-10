@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>List of User</title>
-    <meta charset="UTF-8">
-</head>
+    <head th:replace="~{/commons/head :: head}"></head>
 <body>
+<div th:replace="~{/commons/header :: header}"></div>
 <h1>List of User</h1>
 <h3 th:if="${message != null}" th:text="${message}">Message</h3>
 <a th:href="@{/user/edit}">Create new User</a>
@@ -12,12 +12,9 @@
     <thead>
     <tr>
         <th>username</th>
-        <th>password</th>
         <th>firstname</th>
         <th>lastname</th>
         <th>email</th>
-        <th>roles</th>
-        <th>expenseItems</th>
 
         <th>Action</th>
     </tr>
@@ -25,21 +22,9 @@
     <tbody>
     <tr th:each="entity : ${list}">
         <td th:text=${entity.username}></td>
-        <td th:text=${entity.password}></td>
         <td th:text=${entity.firstname}></td>
         <td th:text=${entity.lastname}></td>
         <td th:text=${entity.email}></td>
-        <td>
-            <ul>
-                <li th:each="roles_item : ${entity.roles}" th:text="${roles_item}"></li>
-            </ul>
-        </td>
-        <td>
-            <ul>
-                <li th:each="expenseItems_item : ${entity.expenseItems}" th:text="${expenseItems_item}"></li>
-            </ul>
-        </td>
-
         <td>
             <a th:href="@{/user/{id}(id=${entity.id})}">See detail</a>
             <a th:href="@{/user/edit/{id}(id=${entity.id})}">Edit</a>
@@ -52,5 +37,6 @@
     </tr>
     </tbody>
 </table>
+<div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>

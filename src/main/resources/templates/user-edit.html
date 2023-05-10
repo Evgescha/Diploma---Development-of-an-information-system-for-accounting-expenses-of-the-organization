@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <head th:replace="~{/commons/head :: head}"></head>
+<body>
+<div th:replace="~{/commons/header :: header}"></div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col module_cont pb40">
+            <div class="bg_title"><h3>Edit User</h3></div>
+            <div class="module_content contact_form">
+                <div id="note"></div>
+                <div id="fields">
+                    <form th:action="@{/user}" th:object="${entity}" id="ajax-contact-form" method="post">
+                        <h3 th:if="${message != null}" th:text="${message}">Message</h3>
+                        <div class="row row20">
+                            <div class="col-sm-4">
+                                <input type="text" th:field="*{username}" placeholder="Username *" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="password" th:field="*{password}" placeholder="Password *" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" th:field="*{firstname}" placeholder="First Name *" required>
+                            </div>
+                        </div>
+                        <div class="row row20">
+                            <div class="col-sm-4">
+                                <input type="text" th:field="*{lastname}" placeholder="Last Name *" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" th:field="*{image}" placeholder="Image URL *" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="email" th:field="*{email}" placeholder="Email *" required>
+                            </div>
+                        </div>
+                        <div class="row row20">
+                            <div class="col-sm-6" hidden>
+                                <input type="text" th:field="*{id}" placeholder="Id" hidden>
+                            </div>
+                        </div>
+                        <div class="row row20">
+                            <div class="col-sm-6">
+                                <input type="submit" value="Save">
+                            </div>
+                            <div class="col-sm-6">
+                                <a th:href="@{/user}">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="~{/commons/footer :: footer}"></div>
+</body>
+</html>

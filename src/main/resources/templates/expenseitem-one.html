@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>View ExpenseItem</title>
-    <meta charset="UTF-8">
-</head>
+    <title>View expenseitem</title>
+    <head th:replace="~{/commons/head :: head}"></head>
 <body>
-<h1>ExpenseItem Details</h1>
+<div th:replace="~{/commons/header :: header}"></div>
+<h1>expenseitem Details</h1>
 <h3 th:if="${message!=null}" th:text="${message}">Message</h3>
 <table>
     <tr>
@@ -25,8 +25,8 @@
         <td th:text="${entity.User}"></td>
     </tr>
     <tr>
-        <th>budgetAllocation:</th>
-        <td th:text="${entity.budgetAllocation}"></td>
+        <th>budgetallocation:</th>
+        <td th:text="${entity.budgetallocation}"></td>
     </tr>
     <tr>
         <th>category:</th>
@@ -43,5 +43,6 @@
                + ${entity.id} + '/delete'">
     <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
 </form>
+<div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>

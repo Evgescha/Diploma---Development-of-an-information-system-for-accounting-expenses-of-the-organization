@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>View Budget</title>
-    <meta charset="UTF-8">
-</head>
+    <head th:replace="~{/commons/head :: head}"></head>
 <body>
+<div th:replace="~{/commons/header :: header}"></div>
 <h1>Budget Details</h1>
 <h3 th:if="${message!=null}" th:text="${message}">Message</h3>
 <table>
@@ -29,11 +29,11 @@
         <td th:text="${entity.periodEnd}"></td>
     </tr>
     <tr>
-        <th>budgetAllocations:</th>
+        <th>budgetallocations:</th>
         <td>
             <ul>
-                <li th:each="budgetAllocations_item : ${entity.budgetAllocations}"
-                    th:text="${budgetAllocations_item}"></li>
+                <li th:each="budgetallocations_item : ${entity.budgetallocations}"
+                    th:text="${budgetallocations_item}"></li>
             </ul>
         </td>
     </tr>
@@ -48,5 +48,6 @@
                + ${entity.id} + '/delete'">
     <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
 </form>
+<div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Role</title>
-</head>
+    <head th:replace="~{/commons/head :: head}"></head>
 <body>
+<div th:replace="~{/commons/header :: header}"></div>
 <h1>Edit Role</h1>
 <h3 th:if="${message != null}" th:text="${message}">Message</h3>
 <form th:action="@{/role}" th:object="${entity}" method="post">
@@ -21,5 +22,6 @@
     </p>
 </form>
 
+<div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>

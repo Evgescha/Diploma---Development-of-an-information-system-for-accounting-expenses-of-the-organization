@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Budget</title>
+    <head th:replace="~{/commons/head :: head}"></head>
+<body>
+<div th:replace="~{/commons/header :: header}"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col module_cont pb40">
+            <div class="bg_title"><h3>Edit Budget</h3></div>
+            <div class="module_content contact_form">
+                <div id="note"></div>
+                <div id="fields">
+                    <form th:action="@{/budget}" th:object="${entity}" id="ajax-contact-form" method="post">
+                        <h3 th:if="${message != null}" th:text="${message}">Message</h3>
+                        <div class="row row20">
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{name}" placeholder="Name *" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <textarea type="text" th:field="*{description}" placeholder="Description *" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row row20">
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{totalAmount}" placeholder="Total Amount *" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" th:field="*{periodStart}" placeholder="Period Start *" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" th:field="*{periodEnd}" placeholder="Period End *" required>
+                            </div>
+                        </div>
+                        <div class="row row20">
+                            <div class="col-sm-6" hidden>
+                                <input type="text" th:field="*{id}" placeholder="Id" hidden>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="submit" value="Save">
+                                <a th:href="@{/budget}">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="~{/commons/footer :: footer}"></div>
+</body>
+</html>

@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>List of Budget</title>
-    <meta charset="UTF-8">
-</head>
+    <head th:replace="~{/commons/head :: head}"></head>
 <body>
+<div th:replace="~{/commons/header :: header}"></div>
 <h1>List of Budget</h1>
 <h3 th:if="${message != null}" th:text="${message}">Message</h3>
 <a th:href="@{/budget/edit}">Create new Budget</a>
@@ -16,7 +16,7 @@
         <th>totalAmount</th>
         <th>periodStart</th>
         <th>periodEnd</th>
-        <th>budgetAllocations</th>
+        <th>budgetallocations</th>
 
         <th>Action</th>
     </tr>
@@ -30,8 +30,8 @@
         <td th:text=${entity.periodEnd}></td>
         <td>
             <ul>
-                <li th:each="budgetAllocations_item : ${entity.budgetAllocations}"
-                    th:text="${budgetAllocations_item}"></li>
+                <li th:each="budgetallocations_item : ${entity.budgetallocations}"
+                    th:text="${budgetallocations_item}"></li>
             </ul>
         </td>
 
@@ -47,5 +47,6 @@
     </tr>
     </tbody>
 </table>
+<div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>

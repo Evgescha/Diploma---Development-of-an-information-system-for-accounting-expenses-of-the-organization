@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>List of ExpenseItem</title>
-    <meta charset="UTF-8">
-</head>
+    <title>List of expenseitem</title>
+    <head th:replace="~{/commons/head :: head}"></head>
 <body>
-<h1>List of ExpenseItem</h1>
+<div th:replace="~{/commons/header :: header}"></div>
+<h1>List of expenseitem</h1>
 <h3 th:if="${message != null}" th:text="${message}">Message</h3>
-<a th:href="@{/expenseItem/edit}">Create new ExpenseItem</a>
+<a th:href="@{/expenseitem/edit}">Create new expenseitem</a>
 <table>
     <thead>
     <tr>
@@ -15,7 +15,7 @@
         <th>amount</th>
         <th>date</th>
         <th>User</th>
-        <th>budgetAllocation</th>
+        <th>budgetallocation</th>
         <th>category</th>
 
         <th>Action</th>
@@ -27,14 +27,14 @@
         <td th:text=${entity.amount}></td>
         <td th:text=${entity.date}></td>
         <td th:text=${entity.User}></td>
-        <td th:text=${entity.budgetAllocation}></td>
+        <td th:text=${entity.budgetallocation}></td>
         <td th:text=${entity.category}></td>
 
         <td>
-            <a th:href="@{/expenseItem/{id}(id=${entity.id})}">See detail</a>
-            <a th:href="@{/expenseItem/edit/{id}(id=${entity.id})}">Edit</a>
+            <a th:href="@{/expenseitem/{id}(id=${entity.id})}">See detail</a>
+            <a th:href="@{/expenseitem/edit/{id}(id=${entity.id})}">Edit</a>
             <form th:if="${entity.id!=null}" method="get"
-                  th:action="'/expenseItem/'
+                  th:action="'/expenseitem/'
                   +${entity.id}+'/delete'">
                 <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
             </form>
@@ -42,5 +42,6 @@
     </tr>
     </tbody>
 </table>
+<div th:replace="~{/commons/footer :: footer}"></div>
 </body>
 </html>
