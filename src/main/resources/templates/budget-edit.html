@@ -14,7 +14,7 @@
             <div class="module_content contact_form">
                 <div id="note"></div>
                 <div id="fields">
-                    <form th:action="@{/budget}" th:object="${entity}" id="ajax-contact-form" method="post">
+                    <form th:action="@{/budget}" th:object="${entity}" method="post">
                         <h3 th:if="${message != null}" th:text="${message}">Message</h3>
                         <div class="row row20">
                             <div class="col-sm-6">
@@ -36,8 +36,8 @@
                             </div>
                         </div>
                         <div class="row row20">
-                            <div class="col-sm-6" hidden>
-                                <input type="text" th:field="*{id}" placeholder="Id" hidden>
+                            <div class="col-sm-6" >
+                                <input type="text" th:field="*{id}" placeholder="Id" name="id">
                             </div>
                             <div class="col-sm-6">
                                 <input type="submit" value="Save">

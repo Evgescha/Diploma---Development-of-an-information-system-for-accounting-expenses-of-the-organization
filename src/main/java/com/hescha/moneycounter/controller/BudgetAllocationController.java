@@ -1,5 +1,6 @@
 package com.hescha.moneycounter.controller;
 
+import com.hescha.moneycounter.model.Budget;
 import com.hescha.moneycounter.model.BudgetAllocation;
 import com.hescha.moneycounter.model.BudgetAllocation;
 import com.hescha.moneycounter.service.BudgetAllocationService;
@@ -65,6 +66,10 @@ public class BudgetAllocationController {
         if (entity.getId() == null) {
             try {
                 BudgetAllocation createdEntity = service.create(entity);
+
+                Budget budget = entity.getBudget();
+                budget.getBudgetAllocations().add(createdEntity);
+                budgetService.update(budget);
                 ra.addFlashAttribute(MESSAGE, "Creating is successful");
                 return REDIRECT_TO_ALL_ITEMS + "/" + createdEntity.getId();
             } catch (Exception e) {
@@ -74,7 +79,17 @@ public class BudgetAllocationController {
             return REDIRECT_TO_ALL_ITEMS;
         } else {
             try {
-                service.update(entity.getId(), entity);
+                BudgetAllocation budgetAllocation = service.read(entity.getId());
+                Budget budget = budgetAllocation.getBudget();
+                budget.getBudgetAllocations().remove(budgetAllocation);
+                budgetService.update(budget);
+
+                BudgetAllocation update = service.update(entity.getId(), entity);
+
+                budget = update.getBudget();
+                budget.getBudgetAllocations().add(update);
+                budgetService.update(budget);
+
                 ra.addFlashAttribute(MESSAGE, "Editing is successful");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -87,6 +102,11 @@ public class BudgetAllocationController {
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes ra) {
         try {
+            BudgetAllocation budgetAllocation = service.read(id);
+            Budget budget = budgetAllocation.getBudget();
+            budget.getBudgetAllocations().remove(budgetAllocation);
+            budgetService.update(budget);
+
             service.delete(id);
             ra.addFlashAttribute(MESSAGE, "Removing is successful");
         } catch (Exception e) {

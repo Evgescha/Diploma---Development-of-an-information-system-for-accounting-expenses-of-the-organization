@@ -386,35 +386,8 @@ jQuery(document).ready(function ($) {
 			});					
 		}	
 	}
-	
-	//Feature Portfolio
-	if (jQuery('.featured_portfolio').size() > 0) {
-		portfhover();
-	}
-	
-	// Contact form
-	if (jQuery('.contact_form').size() > 0) {
-		jQuery("#ajax-contact-form").on("submit", function() {
-			var str = $(this).serialize();		
-			$.ajax({
-				type: "POST",
-				url: "contact_form/contact_process.php",
-				data: str,
-				success: function(msg) {
-					// Message Sent - Show the 'Thank You' message and hide the form
-					if(msg == 'OK') {
-						var result = '<div class="notification_ok">Your message has been sent. Thank you!</div>';
-						jQuery("#fields").hide();
-					} else {
-						var result = msg;
-					}
-					jQuery('#note').html(result);
-				}
-			});
-			return false;
-		});
-	}	
-	
+
+
 	jQuery('.fw_block').wrapInner('<div class="fw_wrapinner"></div>');
     
 	fw_block();
@@ -429,21 +402,7 @@ jQuery(document).ready(function ($) {
 		});		
 	}
 	
-	// Sortable Portfolio
-	if (jQuery('.filter_navigation').size() > 0) {
-		fltr_tooltip();						
-	}	
-	if (jQuery('.sorting_block').size() > 0 && !jQuery('.sorting_block').hasClass('column1')) {
-		jQuery('.sorting_block .element').each(function() {
-			var item_info_h = jQuery(this).find(".featured_items_body").height() + 30;
-			jQuery(this).find(".item_wrapper").mouseenter(function() {
-				jQuery(this).find(".view_link").css({'margin-top' : - 30 - item_info_h/2 + 'px'});
-			}).mouseleave(function() {
-				jQuery(this).find(".view_link").css({'margin-top' : - 30 + 'px'});
-			});		
-		});
-	}
-	
+
 	if (jQuery('.first-module').hasClass("module_slider")) {
 		jQuery('.first-module.module_slider').parents('.fw_block').addClass('mt_90');
 		jQuery('.first-module.module_slider').parents('.row').addClass('full_width_row');

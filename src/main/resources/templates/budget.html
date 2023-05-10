@@ -5,6 +5,7 @@
     <head th:replace="~{/commons/head :: head}"></head>
 <body>
 <div th:replace="~{/commons/header :: header}"></div>
+
 <div class="container mt-4">
     <h1 class="text-center">List of Budgets</h1>
     <div class="my-4">
@@ -19,7 +20,6 @@
             <th>Total Amount</th>
             <th>Period Start</th>
             <th>Period End</th>
-            <th>Budget Allocations</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -30,12 +30,6 @@
             <td th:text=${entity.totalAmount}></td>
             <td th:text=${entity.periodStart}></td>
             <td th:text=${entity.periodEnd}></td>
-            <td>
-                <ul>
-                    <li th:each="budgetallocations_item : ${entity.budgetallocations}"
-                        th:text="${budgetallocations_item}"></li>
-                </ul>
-            </td>
             <td>
                 <a class="btn btn-info btn-sm" th:href="@{/budget/{id}(id=${entity.id})}">See detail</a>
                 <a class="btn btn-warning btn-sm" th:href="@{/budget/edit/{id}(id=${entity.id})}">Edit</a>

@@ -19,4 +19,13 @@ public class BudgetAllocation extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private ExpenseCategory category;
+
+    @Override
+    public String toString() {
+        return "BudgetAllocation{" +
+                "allocatedAmount=" + allocatedAmount +
+                ", budget=" + budget.getName() +
+                ", category=" + category.getName() +
+                '}';
+    }
 }
