@@ -17,31 +17,6 @@ public class ExpenseCategoryService extends CrudService<ExpenseCategory> {
         this.repository = repository;
     }
 
-    public List<ExpenseCategory> findByName(String name) {
-        return repository.findByName(name);
-    }
-
-    public List<ExpenseCategory> findByNameContains(String name) {
-        return repository.findByNameContains(name);
-    }
-
-    public List<ExpenseCategory> findByDescription(String description) {
-        return repository.findByDescription(description);
-    }
-
-    public List<ExpenseCategory> findByDescriptionContains(String description) {
-        return repository.findByDescriptionContains(description);
-    }
-
-    public ExpenseCategory findByParentCategory(ExpenseCategory parentCategory) {
-        return repository.findByParentCategory(parentCategory);
-    }
-
-    public List<ExpenseCategory> findByChildCategoriesContains(com.hescha.moneycounter.model.ExpenseCategory childCategories) {
-        return repository.findByChildCategoriesContains(childCategories);
-    }
-
-
     public ExpenseCategory update(Long id, ExpenseCategory entity) {
         ExpenseCategory read = read(id);
         if (read == null) {

@@ -25,26 +25,6 @@ public class ExpenseItemService extends CrudService<ExpenseItem> {
         this.repository = repository;
     }
 
-    public List<ExpenseItem> findByName(String name) {
-        return repository.findByName(name);
-    }
-
-    public List<ExpenseItem> findByNameContains(String name) {
-        return repository.findByNameContains(name);
-    }
-
-    public ExpenseItem findByAmount(BigDecimal amount) {
-        return repository.findByAmount(amount);
-    }
-
-    public ExpenseItem findByDate(LocalDate date) {
-        return repository.findByDate(date);
-    }
-
-    public ExpenseItem findByUser(User User) {
-        return repository.findByUser(User);
-    }
-
     public List<ExpenseItem> findByBudgetAllocation(BudgetAllocation budgetAllocation) {
         return repository.findByBudgetAllocation(budgetAllocation);
     }

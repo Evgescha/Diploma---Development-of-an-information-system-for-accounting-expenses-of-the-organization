@@ -27,38 +27,6 @@ public class BudgetService extends CrudService<Budget> {
         this.repository = repository;
     }
 
-    public List<Budget> findByName(String name) {
-        return repository.findByName(name);
-    }
-
-    public List<Budget> findByNameContains(String name) {
-        return repository.findByNameContains(name);
-    }
-
-    public List<Budget> findByDescription(String description) {
-        return repository.findByDescription(description);
-    }
-
-    public List<Budget> findByDescriptionContains(String description) {
-        return repository.findByDescriptionContains(description);
-    }
-
-    public Budget findByTotalAmount(BigDecimal totalAmount) {
-        return repository.findByTotalAmount(totalAmount);
-    }
-
-    public Budget findByPeriodStart(LocalDate periodStart) {
-        return repository.findByPeriodStart(periodStart);
-    }
-
-    public Budget findByPeriodEnd(LocalDate periodEnd) {
-        return repository.findByPeriodEnd(periodEnd);
-    }
-
-    public List<Budget> findByBudgetAllocationsContains(com.hescha.moneycounter.model.BudgetAllocation budgetAllocations) {
-        return repository.findByBudgetAllocationsContains(budgetAllocations);
-    }
-
 
     public Budget update(Long id, Budget entity) {
         Budget read = read(id);

@@ -20,18 +20,6 @@ public class BudgetAllocationService extends CrudService<BudgetAllocation> {
         this.repository = repository;
     }
 
-    public BudgetAllocation findByAllocatedAmount(BigDecimal allocatedAmount) {
-        return repository.findByAllocatedAmount(allocatedAmount);
-    }
-
-    public BudgetAllocation findByBudget(Budget budget) {
-        return repository.findByBudget(budget);
-    }
-
-    public BudgetAllocation findByCategory(ExpenseCategory category) {
-        return repository.findByCategory(category);
-    }
-
 
     public BudgetAllocation update(Long id, BudgetAllocation entity) {
         BudgetAllocation read = read(id);

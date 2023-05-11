@@ -9,7 +9,4 @@ import java.util.Set;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
-    List<Role> findByName(String name);
-
-    List<Role> findByNameContains(String name);
 }

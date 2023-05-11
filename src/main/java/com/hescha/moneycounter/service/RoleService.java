@@ -17,15 +17,6 @@ public class RoleService extends CrudService<Role> {
         this.repository = repository;
     }
 
-    public List<Role> findByName(String name) {
-        return repository.findByName(name);
-    }
-
-    public List<Role> findByNameContains(String name) {
-        return repository.findByNameContains(name);
-    }
-
-
     public Role update(Long id, Role entity) {
         Role read = read(id);
         if (read == null) {

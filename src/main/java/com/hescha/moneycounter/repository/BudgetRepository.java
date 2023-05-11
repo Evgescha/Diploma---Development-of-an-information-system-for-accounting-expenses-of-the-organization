@@ -11,19 +11,4 @@ import java.util.Set;
 
 @Repository
 public interface BudgetRepository extends JpaRepository<Budget, Long> {
-    List<Budget> findByName(String name);
-
-    List<Budget> findByNameContains(String name);
-
-    List<Budget> findByDescription(String description);
-
-    List<Budget> findByDescriptionContains(String description);
-
-    Budget findByTotalAmount(BigDecimal totalAmount);
-
-    Budget findByPeriodStart(LocalDate periodStart);
-
-    Budget findByPeriodEnd(LocalDate periodEnd);
-
-    List<Budget> findByBudgetAllocationsContains(com.hescha.moneycounter.model.BudgetAllocation budgetAllocations);
 }

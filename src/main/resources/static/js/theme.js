@@ -388,7 +388,7 @@ jQuery(document).ready(function ($) {
 	}
 
 
-	jQuery('.fw_block').wrapInner('<div class="fw_wrapinner"></div>');
+	// jQuery('.fw_block').wrapInner('<div class="fw_wrapinner"></div>');
     
 	fw_block();
 	

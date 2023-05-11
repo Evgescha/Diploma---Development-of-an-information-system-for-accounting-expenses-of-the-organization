@@ -14,15 +14,5 @@ import java.util.Set;
 
 @Repository
 public interface ExpenseItemRepository extends JpaRepository<ExpenseItem, Long> {
-    List<ExpenseItem> findByName(String name);
-
-    List<ExpenseItem> findByNameContains(String name);
-
-    ExpenseItem findByAmount(BigDecimal amount);
-
-    ExpenseItem findByDate(LocalDate date);
-
-    ExpenseItem findByUser(User User);
-
     List<ExpenseItem> findByBudgetAllocation(BudgetAllocation budgetAllocation);
 }

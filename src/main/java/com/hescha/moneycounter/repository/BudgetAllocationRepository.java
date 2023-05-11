@@ -12,9 +12,4 @@ import java.util.Set;
 
 @Repository
 public interface BudgetAllocationRepository extends JpaRepository<BudgetAllocation, Long> {
-    BudgetAllocation findByAllocatedAmount(BigDecimal allocatedAmount);
-
-    BudgetAllocation findByBudget(Budget budget);
-
-    BudgetAllocation findByCategory(ExpenseCategory category);
 }
