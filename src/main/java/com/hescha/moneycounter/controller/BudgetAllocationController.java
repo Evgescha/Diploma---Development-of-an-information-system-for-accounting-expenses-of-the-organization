@@ -6,6 +6,7 @@ import com.hescha.moneycounter.model.BudgetAllocation;
 import com.hescha.moneycounter.service.BudgetAllocationService;
 import com.hescha.moneycounter.service.BudgetService;
 import com.hescha.moneycounter.service.ExpenseCategoryService;
+import com.hescha.moneycounter.service.ExpenseItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
@@ -34,6 +35,7 @@ public class BudgetAllocationController {
 
     private final BudgetService budgetService;
     private final ExpenseCategoryService expenseCategoryService;
+    private final ExpenseItemService expenseItemService;
 
     @GetMapping
     public String readAll(Model model) {
@@ -106,6 +108,7 @@ public class BudgetAllocationController {
             Budget budget = budgetAllocation.getBudget();
             budget.getBudgetAllocations().remove(budgetAllocation);
             budgetService.update(budget);
+            expenseItemService.removeRelated(budgetAllocation);
 
             service.delete(id);
             ra.addFlashAttribute(MESSAGE, "Removing is successful");

@@ -24,5 +24,5 @@ public interface ExpenseItemRepository extends JpaRepository<ExpenseItem, Long> 
 
     ExpenseItem findByUser(User User);
 
-    ExpenseItem findByBudgetAllocation(BudgetAllocation budgetAllocation);
+    List<ExpenseItem> findByBudgetAllocation(BudgetAllocation budgetAllocation);
 }

@@ -4,6 +4,7 @@ import com.hescha.moneycounter.model.User;
 import com.hescha.moneycounter.model.User;
 import com.hescha.moneycounter.service.ExpenseItemService;
 import com.hescha.moneycounter.service.RoleService;
+import com.hescha.moneycounter.service.SecurityService;
 import com.hescha.moneycounter.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,7 @@ public class UserController {
     public static final String REDIRECT_TO_ALL_ITEMS = "redirect:" + CURRENT_ADDRESS;
 
     private final UserService service;
-
+    private final SecurityService securityService;
     private final RoleService roleService;
     private final ExpenseItemService expenseItemService;
 
@@ -44,6 +45,11 @@ public class UserController {
     public String read(@PathVariable("id") Long id, Model model) {
         model.addAttribute("entity", service.read(id));
         return THYMELEAF_TEMPLATE_ONE_ITEM_PAGE;
+    }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "redirect:/user/" + securityService.getLoggedIn().getId();
     }
 
     @GetMapping(path = {"/edit", "/edit/{id}"})

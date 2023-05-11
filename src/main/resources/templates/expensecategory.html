@@ -35,8 +35,8 @@
                 </ul>
             </td>
             <td style="
-    display: flex;
-    flex-direction: column;">
+                    display: flex;
+                    flex-direction: column;">
                 <a class="btn btn-info btn-sm" th:href="@{/expensecategory/{id}(id=${entity.id})}">See detail</a>
                 <a class="btn btn-warning btn-sm" th:href="@{/expensecategory/edit/{id}(id=${entity.id})}">Edit</a>
                 <form th:if="${entity.id!=null}" method="get" th:action="'/expensecategory/'+${entity.id}+'/delete'">

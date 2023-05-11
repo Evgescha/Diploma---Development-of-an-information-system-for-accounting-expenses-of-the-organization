@@ -45,7 +45,7 @@
                         </li>
                         <li th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('MANAGER')}">
                             <a href="/expenseitem" class="nav-item nav-link"
-                            >expenseitem</a>
+                            >Expense Item</a>
                         </li>
                         <li th:if="${#request.isUserInRole('ADMIN')}">
                             <a href="/user" class="nav-item nav-link" >Users</a>

@@ -27,6 +27,7 @@
                             <div class="col-sm-8">
                                 <label class="info-title" for="roles">Parent Category</label>
                                 <select th:field="*{parentCategory}" id="roles" class="form-control unicase-form-control text-input" style="min-height: 100px">
+                                    <option value="" text=""></option>
                                     <option th:each="item : ${categories}" th:value="${item.id}" th:text="${item.name}"></option>
                                 </select>
                             </div>

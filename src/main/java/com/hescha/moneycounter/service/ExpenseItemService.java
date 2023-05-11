@@ -5,6 +5,7 @@ import com.hescha.moneycounter.model.ExpenseCategory;
 import com.hescha.moneycounter.model.ExpenseItem;
 import com.hescha.moneycounter.model.User;
 import com.hescha.moneycounter.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -16,6 +17,8 @@ import java.util.Set;
 public class ExpenseItemService extends CrudService<ExpenseItem> {
 
     private final ExpenseItemRepository repository;
+    @Autowired
+    private UserRepository userRepository;
 
     public ExpenseItemService(ExpenseItemRepository repository) {
         super(repository);
@@ -42,7 +45,7 @@ public class ExpenseItemService extends CrudService<ExpenseItem> {
         return repository.findByUser(User);
     }
 
-    public ExpenseItem findByBudgetAllocation(BudgetAllocation budgetAllocation) {
+    public List<ExpenseItem> findByBudgetAllocation(BudgetAllocation budgetAllocation) {
         return repository.findByBudgetAllocation(budgetAllocation);
     }
 
@@ -63,5 +66,17 @@ public class ExpenseItemService extends CrudService<ExpenseItem> {
         read.setDate(entity.getDate());
         read.setUser(entity.getUser());
         read.setBudgetAllocation(entity.getBudgetAllocation());
+    }
+
+    public void removeRelated(BudgetAllocation budgetAllocation) {
+        List<ExpenseItem> byBudgetAllocation = findByBudgetAllocation(budgetAllocation);
+
+        for (ExpenseItem item : byBudgetAllocation) {
+            User user = item.getUser();
+            user.getExpenseItems().remove(item);
+            userRepository.save(user);
+            delete(item.getId());
+        }
+
     }
 }

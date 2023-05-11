@@ -23,4 +23,12 @@ public class ExpenseCategory extends AbstractEntity {
 
     @OneToMany
     private List<ExpenseCategory> childCategories = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "ExpenseCategory{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
