@@ -3,56 +3,141 @@
 <head>
     <title>View Budget</title>
     <head th:replace="~{/commons/head :: head}"></head>
+    <style>
+        .rep {
+            display: flex;
+            justify-content: space-between;
+        }
+        table{
+            width: 100%;
+        }
+    </style>
 <body>
 <div th:replace="~{/commons/header :: header}"></div>
 
 
 <div class="container mt-4">
     <h1 class="text-center">Budget Details</h1>
-<div class="row">
-    <div class="col-sm-6">
-        <div class="my-4">
-            <h2><strong th:text="${entity.name}">Name</strong></h2>
-            <p><strong>Description:</strong> <span th:text="${entity.description}">Description</span></p>
-            <p><strong>Total Amount:</strong> <span th:text="${entity.totalAmount}">Total Amount</span></p>
-            <p><strong>Period Start:</strong> <span th:text="${entity.periodStart}">Period Start</span></p>
-            <p><strong>Period End:</strong> <span th:text="${entity.periodEnd}">Period End</span></p>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="my-4">
+                <h2><strong th:text="${entity.name}">Name</strong></h2>
+                <p><strong>Description:</strong> <span th:text="${entity.description}">Description</span></p>
+                <p><strong>Total Amount:</strong> <span th:text="${entity.totalAmount}">Total Amount</span></p>
+                <p><strong>Period Start:</strong> <span th:text="${entity.periodStart}">Period Start</span></p>
+                <p><strong>Period End:</strong> <span th:text="${entity.periodEnd}">Period End</span></p>
 
+            </div>
         </div>
-    </div>
-    <div class="col-sm-6">
-        <h4>Budget Allocations:</h4>
-        <ul>
-            <li th:each="budgetAllocation : ${entity.budgetAllocations}">
-                <p><strong>Allocated Amount:</strong> <span th:text="${budgetAllocation.allocatedAmount}">Allocated Amount</span></p>
-                <p><strong>Category:</strong> <span th:text="${budgetAllocation.category.name}">Category Name</span></p>
-                <p><strong>Category Description:</strong> <span th:text="${budgetAllocation.category.description}">Category Description</span></p>
-                <p style="
+        <div class="col-sm-6">
+            <h4>Budget Allocations:</h4>
+            <ul>
+                <li th:each="budgetAllocation : ${entity.budgetAllocations}">
+                    <p><strong>Allocated Amount:</strong> <span th:text="${budgetAllocation.allocatedAmount}">Allocated Amount</span>
+                    </p>
+                    <p><strong>Category:</strong> <span th:text="${budgetAllocation.category.name}">Category Name</span>
+                    </p>
+                    <p><strong>Category Description:</strong> <span th:text="${budgetAllocation.category.description}">Category Description</span>
+                    </p>
+                    <p style="
                         display: flex;
                         flex-direction: column;">
-                    <a class="btn btn-warning btn-sm" th:href="@{/budgetallocation/edit/{id}(id=${budgetAllocation.id})}">Edit</a>
-                    <form th:if="${budgetAllocation.id!=null}" method="get" th:action="'/budgetallocation/'+${budgetAllocation.id}+'/delete'">
-                        <input class="btn btn-danger btn-sm" type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+                        <a class="btn btn-warning btn-sm"
+                           th:href="@{/budgetallocation/edit/{id}(id=${budgetAllocation.id})}">Edit</a>
+                    <form th:if="${budgetAllocation.id!=null}" method="get"
+                          th:action="'/budgetallocation/'+${budgetAllocation.id}+'/delete'">
+                        <input class="btn btn-danger btn-sm" type="submit" value="Delete"
+                               onclick="return confirm('Are you sure?')">
                     </form>
-                </p>
-            </li>
-        </ul></div>
-</div>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-m-6 d-flex" style="
+        <div class="col-md-6 d-flex" style="
     display: flex;
     justify-content: space-around;
     align-items: center;">
             <a class="btn btn-primary" th:href="@{/budget}">Back to Budget List</a>
 
-            <a class="btn btn-primary" th:href="'/budgetallocation/budged/'+${entity.id}">Create new Budget Allocation</a>
+            <a class="btn btn-primary" th:href="'/budgetallocation/budged/'+${entity.id}">Create new Budget
+                Allocation</a>
             <a th:href="@{/budget/edit/{id}(id=${entity.id})}">Edit</a>
             <form th:if="${entity.id!=null}" method="get"
                   th:action="'/budget/'
                + ${entity.id} + '/delete'">
                 <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
             </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Generating report</h3>
+            <form method="get" th:action="'/budget/' + ${entity.id} + '/report'" class="col-sm-4"
+                  style="
+                                                                                display: flex;
+                                                                                flex-direction: column;">
+                <div class="rep">
+                    <label class="info-title">Start date</label>
+                    <input type="date" name="startDate" required>
+                </div>
+                <div class="rep">
+                    <label class="info-title">Days for report</label>
+                    <input type="number" name="days" min="1" required>
+                </div>
+                <div class="rep">
+                    <input type="submit" value="Generate report">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" th:if="${report!=null}" style="margin: 50px">
+        <div class="col-sm-12">
+            <h1 class="text-center">Report</h1>
+
+            <div class="col-sm-4">
+                <p>Total amount: <span th:text="${report.totalAmount}"></span></p>
+                <p>Number of expense items: <span th:text="${report.expenseItemsCount}"></span></p>
+                <p>Number of unique users: <span th:text="${report.uniqueUserCount}"></span></p></div>
+            <div class="col-sm-4">
+                <h2>Amount by category</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th></th>
+                        <th>Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="entry : ${report.amountByCategory}">
+                        <td th:text="${entry.key}"></td>
+                        <td></td>
+                        <td th:text="${entry.value}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4"><h2>Amount by user</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>User</th>
+                        <th></th>
+                        <th>Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="entry : ${report.amountByUser}">
+                        <td th:text="${entry.key}"></td>
+                        <td></td>
+                        <td th:text="${entry.value}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
