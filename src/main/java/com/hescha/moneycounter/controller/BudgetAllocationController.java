@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -60,6 +62,14 @@ public class BudgetAllocationController {
         model.addAttribute("budgets", budgetService.readAll());
         model.addAttribute("categories", expenseCategoryService.readAll());
 
+        return THYMELEAF_TEMPLATE_EDIT_PAGE;
+    }
+
+    @GetMapping("/budged/{id}")
+    public String addBudgetAlloctaion(Model model, @PathVariable(name = "id", required = false) Long id) {
+        model.addAttribute("entity", new BudgetAllocation());
+        model.addAttribute("budgets", List.of(budgetService.read(id)));
+        model.addAttribute("categories", expenseCategoryService.readAll());
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }
 

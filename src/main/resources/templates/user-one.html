@@ -58,6 +58,7 @@
                                     <th>Date</th>
                                     <th>Budged</th>
                                     <th>Category</th>
+                                    <th>Amount</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -67,6 +68,7 @@
                                     <td th:text="${item.date}"></td>
                                     <td th:text="${item.budgetAllocation.budget.name}"></td>
                                     <td th:text="${item.budgetAllocation.category.name}"></td>
+                                    <td th:text="${item.amount}"></td>
                                 </tr>
                                 </tbody>
                             </table>

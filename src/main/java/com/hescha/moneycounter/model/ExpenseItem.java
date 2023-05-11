@@ -22,5 +22,14 @@ public class ExpenseItem extends AbstractEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private BudgetAllocation budgetAllocation;
 
-
+    @Override
+    public String toString() {
+        return "ExpenseItem{" +
+                "name='" + name + '\'' +
+                ", amount=" + amount +
+                ", date=" + date +
+                ", user=" + user.getUsername() +
+                ", budgetAllocation=" + budgetAllocation.getBudget().getName() +
+                '}';
+    }
 }

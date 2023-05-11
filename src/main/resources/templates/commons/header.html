@@ -51,10 +51,10 @@
                             <a href="/user" class="nav-item nav-link" >Users</a>
                         </li>
                         <li th:if="${#request.userPrincipal == null}" >
-                            <a href="/login">login</a>
+                            <a href="/login">Login</a>
                         </li>
                         <li th:if="${#request.userPrincipal != null}" >
-                            <a href="/logout">logout</a>
+                            <a href="/logout">Logout</a>
                         </li>
                     </ul>
                 </nav>

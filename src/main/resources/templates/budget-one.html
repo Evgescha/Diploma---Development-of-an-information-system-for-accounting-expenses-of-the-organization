@@ -27,6 +27,14 @@
                 <p><strong>Allocated Amount:</strong> <span th:text="${budgetAllocation.allocatedAmount}">Allocated Amount</span></p>
                 <p><strong>Category:</strong> <span th:text="${budgetAllocation.category.name}">Category Name</span></p>
                 <p><strong>Category Description:</strong> <span th:text="${budgetAllocation.category.description}">Category Description</span></p>
+                <p style="
+                        display: flex;
+                        flex-direction: column;">
+                    <a class="btn btn-warning btn-sm" th:href="@{/budgetallocation/edit/{id}(id=${budgetAllocation.id})}">Edit</a>
+                    <form th:if="${budgetAllocation.id!=null}" method="get" th:action="'/budgetallocation/'+${budgetAllocation.id}+'/delete'">
+                        <input class="btn btn-danger btn-sm" type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+                    </form>
+                </p>
             </li>
         </ul></div>
 </div>
@@ -37,6 +45,8 @@
     justify-content: space-around;
     align-items: center;">
             <a class="btn btn-primary" th:href="@{/budget}">Back to Budget List</a>
+
+            <a class="btn btn-primary" th:href="'/budgetallocation/budged/'+${entity.id}">Create new Budget Allocation</a>
             <a th:href="@{/budget/edit/{id}(id=${entity.id})}">Edit</a>
             <form th:if="${entity.id!=null}" method="get"
                   th:action="'/budget/'
