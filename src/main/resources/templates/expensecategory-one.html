@@ -11,23 +11,21 @@
 <div class="container mt-4">
     <h1 class="text-center">Expense Category Details</h1>
     <div class="row">
-        <div class="col">
+        <div class="col-sm-6">
+            <p><strong>Name:</strong> <span th:text="${entity.name}">Category Name</span></p>
+            <p><strong>Description:</strong> <span th:text="${entity.description}">Category Description</span></p>
 
-            <div class="my-4">
-                <p><strong>Name:</strong> <span th:text="${entity.name}">Category Name</span></p>
-                <p><strong>Description:</strong> <span th:text="${entity.description}">Category Description</span></p>
-
-                <h4>Parent Category:</h4>
-                <p th:if="${entity.parentCategory != null}">
-                    <strong>Name:</strong> <span th:text="${entity.parentCategory.name}">Parent Category Name</span>
-                </p>
-                <p th:if="${entity.parentCategory == null}">No parent category</p>
-
-                <h4>Child Categories:</h4>
-                <ul>
-                    <li th:each="child : ${entity.childCategories}" th:text="${child.name}">Child Category Name</li>
-                </ul>
-            </div>
+            <h4>Parent Category:</h4>
+            <p th:if="${entity.parentCategory != null}">
+                <strong>Name:</strong> <span th:text="${entity.parentCategory.name}">Parent Category Name</span>
+            </p>
+            <p th:if="${entity.parentCategory == null}">No parent category</p>
+        </div>
+        <div class="col-sm-6">
+            <h4>Child Categories:</h4>
+            <ul>
+                <li th:each="child : ${entity.childCategories}" th:text="${child.name}">Child Category Name</li>
+            </ul>
         </div>
     </div>
     <div class="row">

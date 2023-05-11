@@ -32,7 +32,6 @@
                         <div class="row row20">
                             <div class="col-sm-4">
                                 <label class="info-title">User</label>
-                                <input type="text" th:field="*{user}" placeholder="User *" required>
                                 <select th:field="*{user}" id="roles" class="form-control unicase-form-control text-input" style="min-height: 100px">
                                     <option th:each="item : ${users}" th:value="${item.id}" th:text="${item.getFullname()}"></option>
                                 </select>

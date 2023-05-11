@@ -19,7 +19,6 @@
             <th>date</th>
             <th>User</th>
             <th>budget allocation</th>
-            <th>category</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -28,9 +27,11 @@
             <td th:text=${entity.name}></td>
             <td th:text=${entity.amount}></td>
             <td th:text=${entity.date}></td>
-            <td th:text=${entity.User}></td>
-            <td th:text=${entity.budgetAllocation}></td>
-            <td>
+            <td th:text=${entity.user.getFullname()}></td>
+            <td th:text=${entity.budgetAllocation}>-</td>
+            <td style="
+    display: flex;
+    flex-direction: column;">
                 <a class="btn btn-info btn-sm" th:href="@{/expenseitem/{id}(id=${entity.id})}">See detail</a>
                 <a class="btn btn-warning btn-sm" th:href="@{/expenseitem/edit/{id}(id=${entity.id})}">Edit</a>
                 <form th:if="${entity.id!=null}" method="get"

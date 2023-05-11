@@ -1,5 +1,6 @@
 package com.hescha.moneycounter.controller;
 
+import com.hescha.moneycounter.model.Budget;
 import com.hescha.moneycounter.model.ExpenseCategory;
 import com.hescha.moneycounter.model.ExpenseCategory;
 import com.hescha.moneycounter.service.ExpenseCategoryService;
@@ -61,6 +62,13 @@ public class ExpenseCategoryController {
         if (entity.getId() == null) {
             try {
                 ExpenseCategory createdEntity = service.create(entity);
+
+                ExpenseCategory category = entity.getParentCategory();
+                if (category != null) {
+                    category.getChildCategories().add(createdEntity);
+                    service.update(category);
+                }
+
                 ra.addFlashAttribute(MESSAGE, "Creating is successful");
                 return REDIRECT_TO_ALL_ITEMS + "/" + createdEntity.getId();
             } catch (Exception e) {
@@ -70,7 +78,23 @@ public class ExpenseCategoryController {
             return REDIRECT_TO_ALL_ITEMS;
         } else {
             try {
-                service.update(entity.getId(), entity);
+                ExpenseCategory old = service.read(entity.getId());
+
+
+                ExpenseCategory category = old.getParentCategory();
+                if (category != null) {
+                    category.getChildCategories().remove(old);
+                    service.update(category);
+                }
+
+                ExpenseCategory updated = service.update(entity.getId(), entity);
+
+
+                category = updated.getParentCategory();
+                if (category != null) {
+                    category.getChildCategories().add(updated);
+                    service.update(category);
+                }
                 ra.addFlashAttribute(MESSAGE, "Editing is successful");
             } catch (Exception e) {
                 e.printStackTrace();

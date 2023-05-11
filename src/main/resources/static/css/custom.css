@@ -408,3 +408,9 @@ h2.portf_title a:hover {
 	color:#f25253;
 }
 
+.form-control{
+	width: 100%;
+	min-height: 30px!important;
+	height: auto;
+	border-radius: 15px;
+}
