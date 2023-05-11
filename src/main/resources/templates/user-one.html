@@ -7,41 +7,113 @@
 <div th:replace="~{/commons/header :: header}"></div>
 
 <div class="container mt-4">
-    <h1 class="text-center">User Details</h1>
 
-    <div class="row">
-        <div class="col-sm-6">
-            <p><strong>Username:</strong> <span th:text="${entity.username}">Username</span></p>
-            <p><strong>First Name:</strong> <span th:text="${entity.firstname}">First Name</span></p>
-            <p><strong>Last Name:</strong> <span th:text="${entity.lastname}">Last Name</span></p>
-            <p><strong>Email:</strong> <span th:text="${entity.email}">Email</span></p>
 
-            <h4>Roles:</h4>
-            <ul>
-                <li th:each="role : ${entity.roles}" th:text="${role.name}"></li>
-            </ul>
-        </div>
-        <div class="col-sm-6">
-            <h4>Expense Items:</h4>
-            <ul>
-                <li th:each="expenseItem : ${entity.expenseItems}">
-                    <span th:text="${expenseItem.name}"></span> -
-                    <span th:text="${expenseItem.amount}"></span>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <a th:href="@{/user}">Back to the List</a>
-            <a th:href="@{/user/edit/{id}(id=${entity.id})}">Edit</a>
-            <form th:if="${entity.id!=null}" method="get"
-                  th:action="'/user/' + ${entity.id} + '/delete'">
-                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
-            </form>
+    <div class="container-xxl py-6 mt-5">
+        <div class="container">
+            <div class="section-header text-center mx-auto mb-5">
+                <h1 class="display-5 mb-3">User Profile</h1>
+                <h3 th:if="${message != null}" th:text="${message}" class="text-center"></h3>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>Personal Information</h3>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Username</th>
+                            <td th:text="${entity.username}"></td>
+                        </tr>
+                        <tr>
+                            <th>First Name</th>
+                            <td th:text="${entity.firstname}"></td>
+                        </tr>
+                        <tr>
+                            <th>Last Name</th>
+                            <td th:text="${entity.lastname}"></td>
+                        </tr>
+                        <tr>
+                            <th>Roles</th>
+                            <td th:text="${entity.getRole()}"></td>
+                        </tr>
+                    </table>
+                    <a class="btn btn-primary"
+                       th:if="${#request.getUserPrincipal().getName().equals(entity.username)  or #request.isUserInRole('ADMIN') or #request.isUserInRole('MANAGER')}"
+                       th:href="@{/user/edit/{id}(id=${entity.id})}">Edit Profile</a>
+                </div>
+                <div class="col-md-4">
+                    <img th:src="${entity.image}" alt="Profile Image" class="img-fluid" style="width: 100%">
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3>Expense items</h3>
+                    <div class="tab-content" id="ordersTabContent">
+                        <div class="tab-pane active" role="tabpanel" aria-labelledby="tab">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Date</th>
+                                    <th>Budged</th>
+                                    <th>Category</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="item : ${entity.expenseItems}">
+                                    <td th:text="${item.id}"></td>
+                                    <td th:text="${item.name}"></td>
+                                    <td th:text="${item.date}"></td>
+                                    <td th:text="${item.budgetAllocation.budget.name}"></td>
+                                    <td th:text="${item.budgetAllocation.category.name}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+<!--    <h1 class="text-center">User Details</h1>-->
+
+<!--    <div class="row">-->
+<!--        <div class="col-sm-6">-->
+<!--            <p><strong>Username:</strong> <span th:text="${entity.username}">Username</span></p>-->
+<!--            <p><strong>First Name:</strong> <span th:text="${entity.firstname}">First Name</span></p>-->
+<!--            <p><strong>Last Name:</strong> <span th:text="${entity.lastname}">Last Name</span></p>-->
+<!--            <p><strong>Email:</strong> <span th:text="${entity.email}">Email</span></p>-->
+
+<!--            <h4>Roles:</h4>-->
+<!--            <ul>-->
+<!--                <li th:each="role : ${entity.roles}" th:text="${role.name}"></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="col-sm-6">-->
+<!--            <h4>Expense Items:</h4>-->
+<!--            <ul>-->
+<!--                <li th:each="expenseItem : ${entity.expenseItems}">-->
+<!--                    <span th:text="${expenseItem.name}"></span> - -->
+<!--                    <span th:text="${expenseItem.amount}"></span>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <a th:href="@{/user}">Back to the List</a>-->
+<!--            <a th:href="@{/user/edit/{id}(id=${entity.id})}">Edit</a>-->
+<!--            <form th:if="${entity.id!=null}" method="get"-->
+<!--                  th:action="'/user/' + ${entity.id} + '/delete'">-->
+<!--                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <br>
 <div th:replace="~{/commons/footer :: footer}"></div>
 </body>

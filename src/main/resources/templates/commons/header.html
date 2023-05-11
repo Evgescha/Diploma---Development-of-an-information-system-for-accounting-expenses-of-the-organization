@@ -32,16 +32,16 @@
                         <li th:if="${#request.userPrincipal != null and !#request.isUserInRole('ADMIN') }">
                             <a href="/user/profile" class="nav-item nav-link" >Profile</a>
                         </li>
-                        <li th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('MANAGER')}">
+                        <li th:if="${#request.isUserInRole('ADMIN')}">
                             <a href="/budget" class="nav-item nav-link"
                             >Budget</a>
                         </li>
                         <li th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('MANAGER')}">
-                            <a href="/budgetallocation" class="nav-item nav-link"  >budgetallocation</a>
+                            <a href="/budgetallocation" class="nav-item nav-link"  >Budget Allocation</a>
                         </li>
                         <li th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('MANAGER')}">
                             <a href="/expensecategory" class="nav-item nav-link"
-                            >expensecategory</a>
+                            >Expense Category</a>
                         </li>
                         <li th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('MANAGER')}">
                             <a href="/expenseitem" class="nav-item nav-link"

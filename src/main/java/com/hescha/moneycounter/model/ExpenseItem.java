@@ -3,6 +3,7 @@ package com.hescha.moneycounter.model;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
@@ -18,6 +19,8 @@ public class ExpenseItem extends AbstractEntity {
     @ManyToOne
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private BudgetAllocation budgetAllocation;
+
+
 }

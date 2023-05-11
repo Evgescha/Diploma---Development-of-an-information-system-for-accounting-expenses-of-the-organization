@@ -20,26 +20,46 @@
                         <h3 th:if="${message != null}" th:text="${message}">Message</h3>
                         <div class="row row20">
                             <div class="col-sm-4">
+                                <label class="info-title">Username</label>
                                 <input type="text" th:field="*{username}" placeholder="Username *" required>
                             </div>
                             <div class="col-sm-4">
+                                <label class="info-title">Password</label>
                                 <input type="password" th:field="*{password}" placeholder="Password *" required>
                             </div>
                             <div class="col-sm-4">
+                                <label class="info-title">First Name</label>
                                 <input type="text" th:field="*{firstname}" placeholder="First Name *" required>
                             </div>
                         </div>
                         <div class="row row20">
                             <div class="col-sm-4">
+                                <label class="info-title">Last Name</label>
                                 <input type="text" th:field="*{lastname}" placeholder="Last Name *" required>
                             </div>
                             <div class="col-sm-4">
+                                <label class="info-title">Image URL</label>
                                 <input type="text" th:field="*{image}" placeholder="Image URL *" required>
                             </div>
                             <div class="col-sm-4">
+                                <label class="info-title">Email</label>
                                 <input type="email" th:field="*{email}" placeholder="Email *" required>
                             </div>
                         </div>
+
+                        <div class="form-group" th:if="${#request.isUserInRole('ADMIN') }">
+                            <label class="info-title" for="roles">Roles <span>*</span></label>
+                            <select multiple="multiple" th:field="*{roles}" id="roles" class="form-control unicase-form-control text-input" style="min-height: 100px">
+                                <option th:each="roles_item : ${role_list}" th:value="${roles_item.id}" th:text="${roles_item.name}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group" th:if="${!#request.isUserInRole('ADMIN') }"  style="opacity: 0">
+                            <label class="info-title" for="roles">Roles <span>*</span></label>
+                            <select multiple="multiple" th:field="*{roles}" id="roles" class="form-control unicase-form-control text-input" style="min-height: 100px">
+                                <option th:each="roles_item : ${role_list}" th:value="${roles_item.id}" th:text="${roles_item.name}"></option>
+                            </select>
+                        </div>
+
                         <div class="row row20">
                             <div class="col-sm-6" hidden>
                                 <input type="text" th:field="*{id}" placeholder="Id" hidden>

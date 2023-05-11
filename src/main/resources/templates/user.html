@@ -17,6 +17,7 @@
             <th>firstname</th>
             <th>lastname</th>
             <th>email</th>
+            <th>image</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -26,6 +27,7 @@
             <td th:text=${entity.firstname}></td>
             <td th:text=${entity.lastname}></td>
             <td th:text=${entity.email}></td>
+            <td> <img th:src="${entity.image}" style="width: 100px; height: 100px"></td>
             <td style="
     display: flex;
     flex-direction: column;">

@@ -28,7 +28,7 @@
             <td th:text=${entity.amount}></td>
             <td th:text=${entity.date}></td>
             <td th:text=${entity.user.getFullname()}></td>
-            <td th:text=${entity.budgetAllocation}>-</td>
+            <td th:text="${entity.budgetAllocation.budget.name}+' - '+ ${entity.budgetAllocation.category.name}">-</td>
             <td style="
     display: flex;
     flex-direction: column;">

@@ -1,15 +1,15 @@
 package com.hescha.moneycounter.controller;
 
 import com.hescha.moneycounter.model.ExpenseItem;
-import com.hescha.moneycounter.model.ExpenseItem;
+import com.hescha.moneycounter.model.User;
 import com.hescha.moneycounter.service.BudgetAllocationService;
 import com.hescha.moneycounter.service.ExpenseCategoryService;
 import com.hescha.moneycounter.service.ExpenseItemService;
+import com.hescha.moneycounter.service.SecurityService;
 import com.hescha.moneycounter.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +33,7 @@ public class ExpenseItemController {
     private final ExpenseItemService service;
 
     private final UserService userService;
+    private final SecurityService securityService;
     private final BudgetAllocationService budgetAllocationService;
     private final ExpenseCategoryService expenseCategoryService;
 
@@ -67,7 +68,16 @@ public class ExpenseItemController {
     public String save(@ModelAttribute ExpenseItem entity, RedirectAttributes ra) {
         if (entity.getId() == null) {
             try {
+                if(entity.getUser()==null){
+                    entity.setUser(securityService.getLoggedIn());
+                }
+
                 ExpenseItem createdEntity = service.create(entity);
+
+                User user = createdEntity.getUser();
+                user.getExpenseItems().add(createdEntity);
+                userService.update(user);
+
                 ra.addFlashAttribute(MESSAGE, "Creating is successful");
                 return REDIRECT_TO_ALL_ITEMS + "/" + createdEntity.getId();
             } catch (Exception e) {
@@ -77,7 +87,18 @@ public class ExpenseItemController {
             return REDIRECT_TO_ALL_ITEMS;
         } else {
             try {
-                service.update(entity.getId(), entity);
+
+                ExpenseItem old = service.read(entity.getId());
+                User user = old.getUser();
+                user.getExpenseItems().remove(old);
+                userService.update(user);
+
+                ExpenseItem updated = service.update(entity.getId(), entity);
+
+
+                user = updated.getUser();
+                user.getExpenseItems().add(updated);
+                userService.update(user);
                 ra.addFlashAttribute(MESSAGE, "Editing is successful");
             } catch (Exception e) {
                 e.printStackTrace();

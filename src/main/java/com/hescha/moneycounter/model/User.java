@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -28,5 +29,10 @@ public class User extends AbstractEntity {
 
     public String getFullname() {
         return firstname + " " + lastname;
+    }
+    public String getRole(){
+        return roles.stream()
+                .map(Role::getName)
+                .collect(Collectors.joining(", "));
     }
 }
